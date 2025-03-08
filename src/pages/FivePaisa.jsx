@@ -83,6 +83,7 @@ const FivePaisa = () => {
             onChange={(e) => setupi(e.target.value)}
             className="w-full max-w-[400px] px-4 py-2 border border-gray-300 text-lg rounded-lg placeholder:text-gray-400"
             type="text"
+            text-black
             placeholder="Enter here UPI ID"
             required
           />
@@ -92,6 +93,7 @@ const FivePaisa = () => {
             onChange={(e) => setno(e.target.value)}
             className="w-full max-w-[400px] px-4 py-2 border border-gray-300 text-lg rounded-lg placeholder:text-gray-400"
             type="text"
+            text-black
             placeholder="Enter 5 Paisa No."
             required
           />
