@@ -1,7 +1,3 @@
----
-
-## **📜 README for Frontend (`frontend/README.md`)**
-```markdown
 # 🌟 Demat Campaign Frontend (React + Vite)
 
 This is the **frontend** for the Demat Campaign system, built with **React.js (Vite)**.  
