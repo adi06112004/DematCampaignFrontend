@@ -9,7 +9,7 @@ const FivePaisa = () => {
   const submitHandler = async (e, campaign) => {
     e.preventDefault();
   
-    const response = await fetch(`https://dematcampaignbackend.onrender.com`, {
+    const response = await fetch(`https://dematcampaignbackend.onrender.com/api/submit`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
