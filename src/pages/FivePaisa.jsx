@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Header from "../components/Header";
+import fivePaisaLogo from "../images/logo.jpg"; 
 
 const FivePaisa = () => {
   const [upi, setupi] = useState("");
@@ -38,8 +39,7 @@ const FivePaisa = () => {
         <div className="flex items-center justify-center w-full mb-4">
           <img
             className="w-12 h-12 rounded-full border-2 border-black"
-            src="src/images/logo.png"
-            alt="Logo"
+            src={fivePaisaLogo} alt="Five Paisa Logo"
           />
           <h1 className="text-2xl font-bold ml-2">
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 text-4xl font-bold">
