@@ -12,7 +12,7 @@ const CampaignData = ({ campaign }) => {
       return;
     }
 
-    fetch(`https://dematcampaignbackend.onrender.com/${campaign}`)
+    fetch(`https://dematcampaignbackend.onrender.com/api/campaign/${campaign}`)
       .then((response) => response.json())
       .then((data) => {
         setUsers(data);
