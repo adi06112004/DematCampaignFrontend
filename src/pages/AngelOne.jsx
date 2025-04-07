@@ -26,7 +26,7 @@ const AngelOne = () => {
       alert(`✅ ${campaign} Details Submitted Successfully!`);
       setupi("");
       setno("");
-      window.open("https://angel-one.onelink.me/Wjgr/9qtu6rzf", "_blank", "noopener,noreferrer");
+      window.open("https://angel-one.onelink.me/Wjgr/xkuvr9zl", "_blank", "noopener,noreferrer");
     } else {
       alert("❌ Submission Failed! Try Again.");
     }
