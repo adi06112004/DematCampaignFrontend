@@ -19,11 +19,11 @@ const FivePaisa = () => {
       }),
     });
   
-    if (response.ok) {
+   if (response.ok) {
       alert(`✅ ${campaign} Details Submitted Successfully!`);
       setupi("");
       setno("");
-      window.open("https://5paisa.page.link/1TT3QamZf6QCG7Wx8", "_blank", "noopener,noreferrer");
+      window.open("https://5paisa.page.link/r9yGd33bivfpef1h6", "_blank", "noopener,noreferrer");
     } else {
       alert("❌ Submission Failed! Try Again.");
     }
