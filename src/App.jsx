@@ -9,6 +9,9 @@ import Contact from './pages/Contact'
 import About from './pages/About'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TideBusiness from './pages/TideBusiness'
+import Upstox from './pages/Upstox'
+import CampaignUnavailable from './pages/CampaignUnavailable'
+import Motilal from './pages/Motilal'
 
 const App = () => {
   return (
@@ -19,10 +22,15 @@ const App = () => {
       <Route path='/campaign' element={<Campaign/>}/>
       <Route path='/fivepaisa' element={<FivePaisa/>}/>
       <Route path='/tidebusiness' element={<TideBusiness/>}/>
+      <Route path='/upstox' element={<Upstox/>}/>
+      <Route path='/motilal' element={<Motilal/>}/>
+      <Route path='/unavailable' element={<CampaignUnavailable/>}/>
       <Route path="/campaign/angelone" element={<CampaignData campaign="Angel One" />} />
       <Route path="/campaign/fivepaisa" element={<CampaignData campaign="Five Paisa" />} />
       <Route path="/campaign/campaign" element={<CampaignData campaign="Campaign" />} />
       <Route path="/campaign/tide" element={<CampaignData campaign="Tide Business" />} />
+      <Route path="/campaign/upstox" element={<CampaignData campaign="Upstox" />} />
+      <Route path="/campaign/motilal" element={<CampaignData campaign="Motilal" />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/about" element={<About />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
