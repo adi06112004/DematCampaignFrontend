@@ -8,7 +8,7 @@ const navItems = [
   { label: "Five Paisa", path: "/fivepaisa" },
   { label: "Tide Business", path: "/tidebusiness" },
   { label: "Upstox", path: "/upstox" },
-  { label: "Motilal", path: "/motilal" },
+  { label: "Motilal", path: "/motilal" }
 ];
 
 const Header = () => {
