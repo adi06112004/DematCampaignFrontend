@@ -11,13 +11,13 @@ const Motilal = () => {
   const submitHandler = async (e, campaign) => {
     e.preventDefault();
 
-    const response = await fetch(`http://localhost:5000/api/submit`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+     const response = await fetch(`https://dematcampaignbackend.onrender.com/api/submit`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         upi,
-        paytmNumber: name,
-        campaignName: campaign,
+        paytmNumber: no,
+        campaignName: campaign, // Store campaign name
       }),
     });
 
