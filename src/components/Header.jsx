@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes, FaMoon, FaSun } from "react-icons/fa";
+import fivePaisaLogo from "../images/logo.jpg"; 
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,8 +18,7 @@ const Header = () => {
         <div className="text-2xl flex items-center space-x-3 font-bold">
           <img
             className="w-10 h-10 rounded-full border-2 border-white"
-            src="src/images/logo.jpg"
-            alt="Logo"
+            src={fivePaisaLogo} alt="Five Paisa Logo"
           />
           <Link to="/">Earning Edge</Link>
         </div>
