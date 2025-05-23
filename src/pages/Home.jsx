@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaArrowRight, FaChartLine, FaDollarSign, FaAlipay } from "react-icons/fa";
+import { FaArrowRight, FaChartLine, FaDollarSign, FaAlipay, FaAlgolia } from "react-icons/fa";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { motion } from "framer-motion";
@@ -11,6 +11,12 @@ const campaigns = [
     path: "/unavailable",
     color: "bg-orange-500 hover:bg-orange-600",
     icon: <FaArrowRight />,
+  },
+  {
+    label: "₹100 Incred Money",
+    path: "/incred",
+    color: "bg-violet-600 hover:bg-violet-700",
+    icon: <FaAlgolia />,
   },
   {
     label: "₹100 SunCrypto",
@@ -47,7 +53,7 @@ const campaigns = [
 
 const Home = () => {
   return (
-    <div className="flex flex-col items-center justify-between min-h-screen bg-gradient-to-b from-purple-900 via-blue-950 to-black text-white">
+    <div className="flex space-y-24 flex-col items-center justify-between min-h-screen bg-gradient-to-b from-purple-900 via-blue-950 to-black text-white">
       <Header />
 
       <motion.div
