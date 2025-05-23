@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaFacebook, FaInstagram, FaTwitter, FaTelegram } from "react-icons/fa";
+import fivePaisaLogo from "../images/logo.jpg"; 
 
 const Footer = () => {
   return (
@@ -12,8 +13,7 @@ const Footer = () => {
           <div className="flex items-center space-x-1">
             <img
             className="w-12 h-12 rounded-full border-2 border-white"
-            src="src/images/logo.jpg"
-            alt="Logo"
+            src={fivePaisaLogo} alt="Five Paisa Logo"
           />
           <h2 className="text-2xl font-bold">Earning Edge</h2>
           </div>
