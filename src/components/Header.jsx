@@ -14,8 +14,13 @@ const Header = () => {
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
         
         {/* Logo */}
-        <div className="text-2xl font-bold">
-          <Link to="/">💰 Earning Edge</Link>
+        <div className="text-2xl flex items-center space-x-3 font-bold">
+          <img
+            className="w-10 h-10 rounded-full border-2 border-white"
+            src="src/images/logo.jpg"
+            alt="Logo"
+          />
+          <Link to="/">Earning Edge</Link>
         </div>
 
         {/* Desktop Navigation */}
