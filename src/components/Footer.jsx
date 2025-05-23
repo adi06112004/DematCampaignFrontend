@@ -8,8 +8,15 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
         
         {/* Logo & Copyright */}
-        <div className="text-center md:text-left mb-4 md:mb-0">
-          <h2 className="text-2xl font-bold">💰 Earning Edge</h2>
+        <div className="text-center space-y-2 md:text-left mb-4 md:mb-0">
+          <div className="flex items-center space-x-1">
+            <img
+            className="w-12 h-12 rounded-full border-2 border-white"
+            src="src/images/logo.jpg"
+            alt="Logo"
+          />
+          <h2 className="text-2xl font-bold">Earning Edge</h2>
+          </div>
           <p className="text-sm text-gray-300">© {new Date().getFullYear()} All Rights Reserved</p>
         </div>
 
