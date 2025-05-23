@@ -95,7 +95,7 @@ const Home = () => {
               },
             },
           }}
-          className="space-y-5 max-h-[320px] overflow-x-hidden overflow-y-auto pr-2"
+          className="space-y-5 pb-10 max-h-[320px] overflow-x-hidden overflow-y-auto pr-2"
         >
           {campaigns.map((item, idx) => (
             <motion.div
