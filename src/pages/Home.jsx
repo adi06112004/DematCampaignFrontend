@@ -1,6 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaArrowRight, FaChartLine, FaDollarSign, FaAlipay, FaAlgolia } from "react-icons/fa";
+import {
+  FaArrowRight,
+  FaChartLine,
+  FaDollarSign,
+  FaAlipay,
+  FaAlgolia,
+} from "react-icons/fa";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { motion } from "framer-motion";
@@ -9,80 +15,114 @@ const campaigns = [
   {
     label: "₹180 Angel One",
     path: "/unavailable",
-    color: "bg-orange-500 hover:bg-orange-600",
+    color: "from-orange-400 to-pink-500",
     icon: <FaArrowRight />,
   },
   {
     label: "₹100 Incred Money",
     path: "/incred",
-    color: "bg-violet-600 hover:bg-violet-700",
+    color: "from-purple-600 to-blue-500",
     icon: <FaAlgolia />,
   },
   {
     label: "₹100 SunCrypto",
     path: "/campaign",
-    color: "bg-red-500 hover:bg-red-600",
+    color: "from-yellow-400 to-red-500",
     icon: <FaChartLine />,
   },
   {
     label: "₹150 Five Paisa",
     path: "/fivepaisa",
-    color: "bg-green-500 hover:bg-green-600",
+    color: "from-green-400 to-blue-600",
     icon: <FaDollarSign />,
   },
   {
     label: "₹200 Tide Business",
     path: "/tidebusiness",
-    color: "bg-blue-500 hover:bg-blue-600",
+    color: "from-cyan-400 to-indigo-500",
     icon: <FaAlipay />,
   },
   {
     label: "₹200 Upstox",
     path: "/upstox",
-    color: "bg-violet-600 hover:bg-violet-800",
+    color: "from-indigo-400 to-purple-600",
     icon: <FaDollarSign />,
   },
   {
     label: "₹100 Motilal",
     path: "/motilal",
-    color: "bg-yellow-600 hover:bg-yellow-800",
+    color: "from-pink-500 to-yellow-500",
     icon: <FaDollarSign />,
   },
-  // Add more campaigns here to test scrolling
 ];
 
 const Home = () => {
   return (
-    <div className="flex space-y-24 flex-col items-center justify-between min-h-screen bg-gradient-to-b from-purple-900 via-blue-950 to-black text-white">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      className="min-h-screen pt-20 pb-24 bg-gradient-to-br from-black via-gray-900 to-black text-white bg-fixed bg-stars"
+    >
       <Header />
 
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="mt-20 md:mt-24 mb-10 w-[90%] max-w-lg rounded-xl bg-slate-800 border-2 border-purple-600 p-6 shadow-lg shadow-purple-600 backdrop-blur"
+        className="mt-10 mb-10 w-[90%] max-w-2xl mx-auto rounded-2xl bg-white/10 border border-purple-800 backdrop-blur-xl shadow-2xl p-8"
       >
-        <h1 className="text-3xl md:text-4xl font-bold text-center bg-gradient-to-r from-cyan-400 to-purple-500 text-black p-3 rounded-xl border-double border-2 border-orange-400 mb-6">
-          🚀 Live Campaigns
-        </h1>
+        <motion.h1
+  initial={{ y: -10 }}
+  animate={{ y: [0, -8, 0] }}
+  transition={{ repeat: Infinity, duration: 2 }}
+  className="text-4xl md:text-5xl font-extrabold text-center bg-gradient-to-r from-green-400 to-cyan-700 bg-clip-text text-transparent mb-8 animate-pulse"
+>
+  <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-400"> {/* to keep gradient on text */}
+    Earning Edge Live Campaigns
+  </span>
+  <span className="text-white ml-2">🚀</span> {/* Emoji with normal color */}
+</motion.h1>
 
-        {/* Scrollable Campaign List */}
-        <div className="flex flex-col w-full space-y-4 pb-10 text-lg overflow-y-auto overflow-x-hidden max-h-[300px] pr-2">
+
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={{
+            visible: {
+              transition: {
+                staggerChildren: 0.15,
+              },
+            },
+          }}
+          className="space-y-5 max-h-[320px] overflow-x-hidden overflow-y-auto pr-2"
+        >
           {campaigns.map((item, idx) => (
-            <Link
+            <motion.div
               key={idx}
-              to={item.path}
-              className={`flex items-center justify-between px-6 py-3 rounded-full shadow-md transition-transform transform hover:scale-105 ${item.color}`}
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
             >
-              <span>{item.label}</span>
-              {item.icon}
-            </Link>
+              <Link
+                to={item.path}
+                className={`flex justify-between items-center px-6 py-4 rounded-xl bg-gradient-to-r ${item.color} shadow-lg shadow-indigo-800/40`}
+              >
+                <span className="text-white text-lg font-semibold">
+                  {item.label}
+                </span>
+                {item.icon}
+              </Link>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </motion.div>
 
       <Footer />
-    </div>
+    </motion.div>
   );
 };
 
