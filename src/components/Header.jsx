@@ -18,7 +18,7 @@ const Header = () => {
         <div className="text-2xl flex items-center space-x-3 font-bold">
           <img
             className="w-10 h-10 rounded-full border-2 border-white"
-            import fivePaisaLogo from "../images/logo.jpg"; 
+            src={fivePaisaLogo} alt="earning edge" 
           />
           <Link to="/">Earning Edge</Link>
         </div>
