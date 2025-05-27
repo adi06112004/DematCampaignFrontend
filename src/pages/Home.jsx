@@ -38,13 +38,13 @@ const campaigns = [
   },
   {
     label: "₹200 Tide Business",
-    path: "/tidebusiness",
+    path: "/unavailable",
     color: "from-cyan-400 to-indigo-500",
     icon: <FaAlipay />,
   },
   {
     label: "₹200 Upstox",
-    path: "/upstox",
+    path: "/unavailable",
     color: "from-indigo-400 to-purple-600",
     icon: <FaDollarSign />,
   },
