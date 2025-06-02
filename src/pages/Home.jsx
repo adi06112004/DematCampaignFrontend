@@ -38,7 +38,7 @@ const campaigns = [
   },
   {
     label: "₹200 Tide Business",
-    path: "/unavailable",
+    path: "/tidebusiness",
     color: "from-cyan-400 to-indigo-500",
     icon: <FaAlipay />,
   },
