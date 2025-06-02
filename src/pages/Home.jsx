@@ -20,7 +20,7 @@ const campaigns = [
   },
   {
     label: "₹100 Incred Money",
-    path: "/incred",
+    path: "/unavailable",
     color: "from-purple-600 to-blue-500",
     icon: <FaAlgolia />,
   },
