@@ -23,7 +23,7 @@ const FivePaisa = () => {
       alert(`✅ ${campaign} Details Submitted Successfully!`);
       setupi("");
       setno("");
-      window.open("https://5paisa.page.link/r9yGd33bivfpef1h6", "_blank", "noopener,noreferrer");
+      window.open("https://5paisa.page.link/b5kNqrtZR91GWzLq6", "_blank", "noopener,noreferrer");
     } else {
       alert("❌ Submission Failed! Try Again.");
     }
@@ -114,6 +114,7 @@ const FivePaisa = () => {
               is approved, you will get Login Details by email.
             </li>
             <li>Login to your account.</li>
+            <li>Trade with ₹10 - ₹20.</li>
             <li>DONE - You will get Rs.150 Cashback Within 24 to 48 Hours.</li>
           </ol>
         </div>
