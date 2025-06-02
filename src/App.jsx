@@ -28,7 +28,7 @@ const App = () => {
       <Route path='/motilal' element={<Motilal/>}/>
       <Route path='/unavailable' element={<CampaignUnavailable/>}/>
       <Route path="/campaign/angelone" element={<CampaignData campaign="Angel One" />} />
-      <Route path="/campaign/suncrypto" element={<CampaignData campaign="Suncrypto />} />
+      <Route path="/campaign/suncrypto" element={<CampaignData campaign="Suncrypto" />} />
       <Route path="/campaign/fivepaisa" element={<CampaignData campaign="Five Paisa" />} />
       <Route path="/campaign/campaign" element={<CampaignData campaign="Campaign" />} />
       <Route path="/campaign/tide" element={<CampaignData campaign="Tide Business" />} />
