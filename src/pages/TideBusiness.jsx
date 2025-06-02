@@ -25,7 +25,7 @@ const TideBusiness = () => {
       alert(`✅ ${campaign} Details Submitted Successfully!`);
       setupi("");
       setno("");
-      window.open("https://skro.in/IT1622NVA7/HMPTXX?ln=English", "_blank", "noopener,noreferrer");
+      window.open("https://aryoleads.co.in/?uid=TIDEBAsgd7Z4qcXaMiOBIqXhiiPr3SbE32", "_blank", "noopener,noreferrer");
     } else {
       alert("❌ Submission Failed! Try Again.");
     }
