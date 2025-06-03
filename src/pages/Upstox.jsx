@@ -23,7 +23,7 @@ const Upstox = () => {
       alert(`✅ ${campaign} Details Submitted Successfully!`);
       setUpi('');
       setName('');
-      window.open("https://link.upstox.com/QQb3", "_blank", "noopener,noreferrer");
+      window.open("https://leads.banksathi.com/?h=NENONVhSdklZRXBwbjhOUnp3RXNIUT09", "_blank", "noopener,noreferrer");
     } else {
       alert("❌ Submission Failed! Try Again.");
     }
@@ -33,6 +33,7 @@ const Upstox = () => {
     "Earn ₹200 For Every Upstox Account Opened Successfully",
     "Download App & Complete KYC",
     "After Enter Otp Confirm Lead With Admin",
+    "After Account Open Trade Above Rs.100",
     "Don't Use Wifi",
     "Cashback credited within 72 hours"
   ];
