@@ -44,7 +44,7 @@ const campaigns = [
   },
   {
     label: "₹200 Upstox",
-    path: "/unavailable",
+    path: "/upstox",
     color: "from-indigo-400 to-purple-600",
     icon: <FaDollarSign />,
   },
