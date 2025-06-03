@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes, FaMoon, FaSun } from "react-icons/fa";
-import fivePaisaLogo from "../images/logo.jpg"; 
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,7 +17,8 @@ const Header = () => {
         <div className="text-2xl flex items-center space-x-3 font-bold">
           <img
             className="w-10 h-10 rounded-full border-2 border-white"
-            src={fivePaisaLogo} alt="earning edge" 
+            src="src/images/logo.jpg"
+            alt="Logo"
           />
           <Link to="/">Earning Edge</Link>
         </div>
@@ -46,9 +46,9 @@ const Header = () => {
         </nav>
 
         {/* Dark Mode Toggle */}
-        <button className="hidden md:block text-xl" onClick={toggleDarkMode}>
+        {/* <button className="hidden md:block text-xl" onClick={toggleDarkMode}>
           {darkMode ? <FaSun className="text-yellow-400" /> : <FaMoon />}
-        </button>
+        </button> */}
 
         {/* Mobile Menu Button */}
         <button className="text-2xl md:hidden focus:outline-none" onClick={toggleMenu}>
@@ -87,11 +87,11 @@ const Header = () => {
         </div>
 
         {/* Dark Mode Toggle in Mobile Menu */}
-        <div className="flex justify-center mt-10">
+        {/* <div className="flex justify-center mt-10">
           <button className="text-2xl" onClick={toggleDarkMode}>
             {darkMode ? <FaSun className="text-yellow-400" /> : <FaMoon />}
           </button>
-        </div>
+        </div> */}
       </div>
     </header>
   );
