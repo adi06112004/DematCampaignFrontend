@@ -26,7 +26,7 @@ const Header = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-6 text-lg">
-          <Link className="hover:text-cyan-400 transition" to="/angelone">
+          <Link className="hover:text-cyan-400 transition" to="/unavailable">
             Angel One
           </Link>
           <Link className="hover:text-cyan-400 transition" to="/campaign">
@@ -38,7 +38,7 @@ const Header = () => {
           <Link className="hover:text-cyan-400 transition" to="/tidebusiness">
             Tide Business
           </Link>
-          <Link className="hover:text-cyan-400 transition" to="/upstox">
+          <Link className="hover:text-cyan-400 transition" to="/unavailable">
             Upstox
           </Link>
           <Link className="hover:text-cyan-400 transition" to="/motilal">
@@ -67,7 +67,7 @@ const Header = () => {
         </div>
 
         <div className="flex flex-col space-y-4 mt-5 px-6 text-lg">
-          <Link className="hover:text-cyan-400 transition" to="/angelone" onClick={toggleMenu}>
+          <Link className="hover:text-cyan-400 transition" to="/unavailable" onClick={toggleMenu}>
             Angel One
           </Link>
           <Link className="hover:text-cyan-400 transition" to="/campaign" onClick={toggleMenu}>
@@ -79,7 +79,7 @@ const Header = () => {
           <Link className="hover:text-cyan-400 transition" to="/tidebusiness" onClick={toggleMenu}>
             Tide Business
           </Link>
-          <Link className="hover:text-cyan-400 transition" to="/upstox">
+          <Link className="hover:text-cyan-400 transition" to="/unavailable">
             Upstox
           </Link>
           <Link className="hover:text-cyan-400 transition" to="/motilal">
