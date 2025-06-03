@@ -38,7 +38,7 @@ const Header = () => {
           <Link className="hover:text-cyan-400 transition" to="/tidebusiness">
             Tide Business
           </Link>
-          <Link className="hover:text-cyan-400 transition" to="/unavailable">
+          <Link className="hover:text-cyan-400 transition" to="/upstox">
             Upstox
           </Link>
           <Link className="hover:text-cyan-400 transition" to="/motilal">
@@ -79,7 +79,7 @@ const Header = () => {
           <Link className="hover:text-cyan-400 transition" to="/tidebusiness" onClick={toggleMenu}>
             Tide Business
           </Link>
-          <Link className="hover:text-cyan-400 transition" to="/unavailable">
+          <Link className="hover:text-cyan-400 transition" to="/upstox">
             Upstox
           </Link>
           <Link className="hover:text-cyan-400 transition" to="/motilal">
