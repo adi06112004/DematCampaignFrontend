@@ -13,7 +13,7 @@ const Campaign = () => {
   const campaign = "Suncrypto";
 
   try {
-    const response = await fetch(`http://localhost:5000/api/submit`, {
+    const response = await fetch(`https://dematcampaignbackend.onrender.com/api/submit`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -30,13 +30,13 @@ const Campaign = () => {
       setTimeout(() => {
         window.open("https://join.suncrypto.in/861331/refer", "_blank", "noopener,noreferrer");
         setIsLoading(false);
-      }, 1500);
+      }, 900);
     } else if (response.status === 400 && data.message === "Already submitted") {
       setNo("");
       setTimeout(() => {
         window.open("https://join.suncrypto.in/861331/refer", "_blank", "noopener,noreferrer");
         setIsLoading(false);
-      }, 1500);
+      }, 900);
     } else {
       setIsLoading(false);
     }
@@ -70,7 +70,7 @@ const Campaign = () => {
         transition={{ duration: 0.8 }}
         className='flex-grow w-full flex justify-center items-center px-4 sm:px-6 py-10'
       >
-        <div className='w-full max-w-4xl p-6 rounded-2xl bg-black/40 backdrop-blur-md shadow-2xl border border-cyan-600'>
+        <div className='w-full sm:mt-0 mt-[20%] max-w-4xl p-6 rounded-2xl bg-black/40 backdrop-blur-md shadow-2xl border border-cyan-600'>
           <div className='text-center mb-6'>
             <h1 className='text-3xl sm:text-4xl font-bold text-cyan-400 glow-text'>🚀 Join Suncrypto</h1>
             <p className='text-slate-300 mt-2 text-sm sm:text-base'>
