@@ -50,7 +50,7 @@ const campaigns = [
   },
   {
     label: "₹100 Motilal",
-    path: "/motilal",
+    path: "/unavailable",
     color: "from-pink-500 to-yellow-500",
     icon: <FaDollarSign />,
   },
