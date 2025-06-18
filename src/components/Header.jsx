@@ -41,7 +41,7 @@ const Header = () => {
           <Link className="hover:text-cyan-400 transition" to="/upstox">
             Upstox
           </Link>
-          <Link className="hover:text-cyan-400 transition" to="/motilal">
+          <Link className="hover:text-cyan-400 transition" to="/unavailable">
             Motilal
           </Link>
         </nav>
@@ -82,7 +82,7 @@ const Header = () => {
           <Link className="hover:text-cyan-400 transition" to="/upstox">
             Upstox
           </Link>
-          <Link className="hover:text-cyan-400 transition" to="/motilal">
+          <Link className="hover:text-cyan-400 transition" to="/unavailable">
             Motilal
           </Link>
         </div>
