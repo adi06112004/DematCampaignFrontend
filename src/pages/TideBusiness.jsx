@@ -1,128 +1,148 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Header from '../components/Header';
+import React, { useState } from "react";
+import Header from "../components/Header";
+import { motion } from "framer-motion";
 
 const TideBusiness = () => {
+  const [upi, setUpi] = useState("");
+  const [name, setName] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-  // const navigate=useNavigate();
+  const campaign = "Tide Business";
 
-  const [upi, setupi] = useState('')
-  const [no, setno] = useState('')
-  const submitHandler = async (e, campaign) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-  
-    const response = await fetch(`https://dematcampaignbackend.onrender.com/api/submit`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        upi,
-        paytmNumber: no,
-        campaignName: campaign, // Store campaign name
-      }),
-    });
-  
-    if (response.ok) {
-      alert(`✅ ${campaign} Details Submitted Successfully!`);
-      setupi("");
-      setno("");
-      window.open("https://aryoleads.co.in/?uid=TIDEBAsgd7Z4qcXaMiOBIqXhiiPr3SbE32", "_blank", "noopener,noreferrer");
-    } else {
-      alert("❌ Submission Failed! Try Again.");
+    setIsLoading(true);
+
+    try {
+      const response = await fetch(`https://dematcampaignbackend.onrender.com/api/submit`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          upi,
+          paytmNumber: name,
+          campaignName: campaign,
+        }),
+      });
+
+      if (response.ok) {
+        setTimeout(() => {
+          setUpi("");
+          setName("");
+          setIsLoading(false);
+          window.open("https://skro.in/IT1622NVA7/HMPTXX?ln=English", "_blank", "noopener,noreferrer");
+        }, 900);
+      } else {
+        alert("❌ Submission Failed! Try Again.");
+        setIsLoading(false);
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong. Please try again later.");
+      setIsLoading(false);
     }
   };
-  
-  
+
   return (
-    <div className="flex flex-col items-center justify-start h-full w-full bg-gradient-to-br from-blue-500 via-slate-900 to-blue-500 text-blue-500">
-      <div className='text-white mb-10'>
+    <div className="min-h-screen bg-gradient-to-br from-blue-500 via-slate-900 to-blue-500 text-white">
+      {isLoading && (
+        <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 text-xl font-bold">
+          ⏳ Submitting...
+        </div>
+      )}
+
       <Header />
-      </div>
-      <div>
-      {/* Header */}
-      <div className="mt-10 text-yellow-400 text-3xl text-center">
-        <h1>Earning Edge - Task & Earn</h1>
-      </div>
 
-      {/* Main Container */}
-      <div className="flex flex-col space-y-5 items-center justify-start rounded-3xl border-double border-8 border-blue-400 mt-5 bg-[#FEF9E4] h-auto w-full max-w-[900px] p-5 sm:p-10">
-        <div className="text-center px-[20px] sm:px-[60px] py-[10px] mt-5 bg-[#FEE8B7] text-2xl rounded-[50px]">
-          <h2>Tide Business</h2>
-        </div>
-        <div className="text-3xl">
-          <h1>Get ₹200.00</h1>
-        </div>
-        <div className="text-orange-300 text-center">
-          <h4>Complete The Task And Earn Rewards in Your Bank Account</h4>
+      <motion.main
+        initial={{ opacity: 0, y: 60 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="flex flex-col items-center px-4 pt-8 pb-32"
+      >
+        <div className="text-3xl mt-[20%] sm:mt-16 text-yellow-400 mb-6 font-bold text-center">
+          Earning Edge - Task & Earn
         </div>
 
-        {/* Form Section */}
-        <div className="w-full max-w-[500px] mx-auto">
-          <form onSubmit={(e)=>{submitHandler(e)}} className="space-y-5">
+        <div className="w-full max-w-2xl bg-[#FEF9E4] text-black rounded-3xl border-8 border-blue-400 p-6 space-y-8 shadow-2xl">
+          <div className="bg-[#FEE8B7] text-2xl text-center rounded-full py-3 font-bold">
+            Tide Business Campaign 💼
+          </div>
+
+          <div className="text-3xl font-semibold text-center text-blue-700">Get ₹200.00</div>
+
+          <p className="text-center text-orange-500 text-lg font-medium">
+            Complete the task and earn directly in your bank account.
+          </p>
+
+          <form onSubmit={submitHandler} className="space-y-5">
             <div>
-              <h3 className="text-xl">Enter Your UPI ID</h3>
+              <label className="block text-xl mb-1">Your UPI ID</label>
               <input
-                value={upi} onChange={(e)=>{setupi(e.target.value)}}
+                type="text"
+                value={upi}
+                onChange={(e) => setUpi(e.target.value)}
                 required
-                className="mt-2 mb-2 w-full px-4 py-[15px] border-2 rounded-xl border-blue-400 text-2xl placeholder:text-xl placeholder:text-[#9CA3AF]"
-                type="text"
-                placeholder="Enter UPI ID"
+                placeholder="e.g. name@upi"
+                className="w-full border-2 border-blue-400 px-4 py-3 rounded-xl text-lg placeholder:text-gray-400"
               />
             </div>
+
             <div>
-              <h3 className="text-xl">Enter Tide Register Name</h3>
+              <label className="block text-xl mb-1">Tide Registered Name</label>
               <input
-              value={no} onChange={(e)=>{setno(e.target.value)}}
-              required
-                className="mt-2 mb-2 text-2xl w-full px-4 py-[15px] border-2 rounded-xl border-blue-400 placeholder:text-xl placeholder:text-[#9CA3AF]"
                 type="text"
-                placeholder="Enter Tide Register Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+                placeholder="Name used in Tide signup"
+                className="w-full border-2 border-blue-400 px-4 py-3 rounded-xl text-lg placeholder:text-gray-400"
               />
             </div>
-            <div className="flex items-center justify-center mt-4">
-            <button onClick={(e) => submitHandler(e, "Tide Business")} className="px-10 py-3 bg-blue-500 text-white rounded-full text-xl hover:bg-blue-600">
-  Submit
-</button>
 
-            </div>
+            <button
+              type="submit"
+              className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 rounded-full text-xl transition-all"
+            >
+              ✅ Submit & Claim ₹200
+            </button>
           </form>
-        </div>
 
-        {/* Steps Section */}
-        <div className="relative w-full max-w-[600px] mx-auto mt-10">
-          <div className="absolute top-0 left-5 w-0.5 h-full bg-blue-500"></div>
-          {["Earn ₹200 For Every Tide Account Opened Succefully", "After Download App and Complete KYC", "Add ₹50 Or More Within 24 Hour", "Use Referral Code AR01 Will Be Eligible For Payout", "Cashback Credit Within 72 Hours"].map(
-            (step, index) => (
-              <div className="flex items-center mb-6 relative" key={index}>
-                <div className="flex items-center justify-center w-10 h-10 bg-blue-500 text-white font-bold rounded-full z-10">
-                  {index + 1}
+          <div className="pt-6">
+            <h3 className="text-xl font-bold text-blue-700 mb-4">🚀 Steps to Earn:</h3>
+            <div className="space-y-4">
+              {[
+                "Earn ₹200 for every successful Tide account.",
+                "Download the app and complete KYC.",
+                "Add ₹50 or more within 24 hours.",
+                "Use Referral Code: AR01 to be eligible.",
+                "Cashback will be credited within 72 hours.",
+              ].map((step, index) => (
+                <div key={index} className="flex items-start gap-4">
+                  <div className="w-8 h-8 flex items-center justify-center bg-blue-500 text-white font-bold rounded-full">
+                    {index + 1}
+                  </div>
+                  <p className="text-blue-700 font-medium">{step}</p>
                 </div>
-                <p className="ml-6 text-blue-700 font-medium">{step}</p>
-              </div>
-            )
-          )}
+              ))}
+            </div>
+          </div>
         </div>
-      </div>
 
-      {/* Payment Info */}
-      <div className="flex flex-col items-center justify-start rounded-3xl border-double border-8 border-blue-400 mt-5 mb-36 bg-[#FEF9E4] h-auto w-full max-w-[900px] p-5 sm:p-10">
-        <h1 className="text-black font-semibold text-xl mt-1">
-          Payment Type: <span className="text-blue-400">UPI</span>
-        </h1>
-        <h1 className="text-black font-semibold text-xl mt-1">
-          Payment Time: <span className="text-blue-400">Upto 72 Hours</span>
-        </h1>
-        <h1 className="text-black font-semibold text-xl mt-1">
-          Saturday & Sunday No Payments
-        </h1>
-        <hr className="border-t-2 border-gray-400 w-full mt-5" />
-        <a
-          className="mt-5 text-green-500 underline font-extrabold hover:text-green-800"
-          href="https://t.me/earningedge123"
-        >
-          Join Telegram Channel For More Updates
-        </a>
-      </div>
-    </div>
+        <div className="w-full max-w-2xl mt-10 bg-[#FEF9E4] text-black border-8 border-blue-400 p-6 rounded-3xl space-y-3 shadow-xl">
+          <h3 className="font-semibold text-lg">Payment Type: <span className="text-blue-600">UPI</span></h3>
+          <h3 className="font-semibold text-lg">Payment Time: <span className="text-blue-600">Up to 72 Hours</span></h3>
+          <h3 className="font-semibold text-lg">Note: <span className="text-red-600">No payments on Saturday & Sunday</span></h3>
+          <div className="mt-4 border-t pt-4 text-center">
+            <a
+              href="https://t.me/earningedge123"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-green-600 underline font-bold hover:text-green-800"
+            >
+              📢 Join Telegram for Updates
+            </a>
+          </div>
+        </div>
+      </motion.main>
     </div>
   );
 };
