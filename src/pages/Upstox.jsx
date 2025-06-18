@@ -8,7 +8,7 @@ const Upstox = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const steps = [
-    "Earn ₹200 for every Upstox account opened successfully.",
+    "Earn ₹125 for every Upstox account opened successfully.",
     "Download the app and complete KYC.",
     "After OTP, confirm lead with admin.",
     "Avoid using WiFi (use mobile data).",
@@ -36,7 +36,7 @@ const Upstox = () => {
         setName("");
         setTimeout(() => {
           setIsLoading(false);
-          window.open("https://link.upstox.com/QQb3", "_blank", "noopener,noreferrer");
+          window.open("https://aryoleads.co.in/?uid=UPSTDAsgd7Z4qcXaMiOBIqXhiiPr3SbE32", "_blank", "noopener,noreferrer");
         }, 800);
       } else {
         alert("❌ Submission Failed! Try Again.");
@@ -64,7 +64,7 @@ const Upstox = () => {
         <section className="bg-white rounded-3xl shadow-2xl p-8 text-gray-800">
           <div className="text-center mb-8">
             <h1 className="text-4xl font-bold text-indigo-600">Upstox Offer 🔥</h1>
-            <p className="text-xl text-gray-600 mt-2">Get ₹200 instantly by completing a few simple steps</p>
+            <p className="text-xl text-gray-600 mt-2">Get ₹125 instantly by completing a few simple steps</p>
           </div>
 
           {/* Form */}
@@ -98,7 +98,7 @@ const Upstox = () => {
                 type="submit"
                 className="px-10 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-full transition duration-300 text-lg"
               >
-                Submit & Earn ₹200
+                Submit & Earn ₹125
               </button>
             </div>
           </form>
