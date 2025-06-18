@@ -1,133 +1,149 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import Header from "../components/Header";
-import fivePaisaLogo from "../images/logo.jpg"; 
 
 const FivePaisa = () => {
-  const [upi, setupi] = useState("");
-  const [no, setno] = useState('')
+  const [upi, setUpi] = useState("");
+  const [no, setNo] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const campaign = "Five Paisa";
 
-  const submitHandler = async (e, campaign) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-  
-    const response = await fetch(`https://dematcampaignbackend.onrender.com/api/submit`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        upi,
-        paytmNumber: no,
-        campaignName: campaign, // Store campaign name
-      }),
-    });
-  
-   if (response.ok) {
-      alert(`✅ ${campaign} Details Submitted Successfully!`);
-      setupi("");
-      setno("");
-      window.open("https://5paisa.page.link/b5kNqrtZR91GWzLq6", "_blank", "noopener,noreferrer");
-    } else {
-      alert("❌ Submission Failed! Try Again.");
+    setIsLoading(true);
+
+    try {
+      const response = await fetch(`https://dematcampaignbackend.onrender.com/api/submit`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          upi,
+          paytmNumber: no,
+          campaignName: campaign,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok || (response.status === 400 && data.message === "Already submitted")) {
+        setTimeout(() => {
+          setUpi("");
+          setNo("");
+          setIsLoading(false);
+          window.open("https://5paisa.page.link/r9yGd33bivfpef1h6", "_blank", "noopener,noreferrer");
+        }, 900);
+      } else {
+        alert("❌ Submission Failed! Try Again.");
+        setIsLoading(false);
+      }
+    } catch (error) {
+      console.error("Server error:", error);
+      alert("❌ Could not connect to server.");
+      setIsLoading(false);
     }
   };
-  
-  
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-purple-800 via-blue-900 to-black text-white">
+    <div className="min-h-screen bg-gradient-to-br from-[#431c73] via-[#232659] to-black text-white flex flex-col">
+      
+      {isLoading && (
+        <div className="fixed top-0 left-0 w-full h-full bg-black/80 text-white flex items-center justify-center text-xl z-50">
+          ⏳ Please wait... Redirecting to 5Paisa
+        </div>
+      )}
+
       <Header />
-      <div className="mt-20 mb-3 flex flex-col items-center w-[90%] max-w-[600px] bg-white rounded-2xl shadow-lg p-6 md:p-10">
 
-        <div className="flex items-center justify-center w-full mb-4">
-          <img
-            className="w-12 h-12 rounded-full border-2 border-black"
-            src={fivePaisaLogo} alt="Five Paisa Logo"
-          />
-          <h1 className="text-2xl font-bold ml-2">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 text-4xl font-bold">
-          Earning Edge
-          </span>
+      <motion.div
+        initial={{ opacity: 0, y: 60 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="flex-grow w-full flex justify-center items-center px-4 sm:px-6 py-10"
+      >
+        <div className="w-full mt-[20%] sm:mt-16 max-w-4xl p-6 rounded-2xl bg-white/10 backdrop-blur-md shadow-2xl border border-yellow-400">
+          <div className="text-center mb-6">
+            <h1 className="text-3xl sm:text-4xl font-bold text-yellow-300 glow-text">💰 5Paisa Offer</h1>
+            <p className="text-slate-300 mt-2 text-sm sm:text-base">
+              Complete Task & Earn <span className="text-green-400 font-semibold">₹150</span>
+            </p>
+          </div>
 
-          </h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            {/* Info Box */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1 }}
+              className="bg-gradient-to-br from-[#553099] to-[#2b2a58] rounded-xl p-5 shadow-md space-y-4 border border-yellow-400"
+            >
+              <h3 className="text-lg font-semibold text-yellow-200">🎯 Steps to Earn</h3>
+              <ol className="list-decimal list-inside text-slate-100 space-y-1 text-sm">
+                <li>Enter UPI and Submit.</li>
+                <li>Use Refer Code <b>50175752</b></li>
+                <li>Complete KYC with PAN & Aadhar</li>
+                <li>Add your bank account</li>
+                <li>After approval, login and DONE</li>
+                <li>₹150 cashback in 24-48 hrs</li>
+              </ol>
+              <div className="text-yellow-300 mt-4 text-sm">
+                ⚠ Cashback via UPI only <br />
+                🛑 New Users Only
+              </div>
+              <a
+                className="mt-4 block text-blue-400 hover:underline text-sm"
+                href="https://t.me/earningedge123"
+                target="_blank"
+                rel="noreferrer"
+              >
+                📢 Join Telegram for Updates
+              </a>
+            </motion.div>
+
+            {/* Form */}
+            <motion.form
+              onSubmit={submitHandler}
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1 }}
+              className="bg-[#1c1530] rounded-xl p-6 border border-yellow-400 shadow-md flex flex-col space-y-4"
+            >
+              <div>
+                <label htmlFor="upi" className="text-sm font-medium text-yellow-200">🔢 Enter UPI ID</label>
+                <input
+                  id="upi"
+                  type="text"
+                  required
+                  value={upi}
+                  onChange={(e) => setUpi(e.target.value)}
+                  placeholder="e.g. name@upi"
+                  className="w-full mt-1 px-4 py-3 rounded-md border border-yellow-500 text-black placeholder:text-gray-500"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="name" className="text-sm font-medium text-yellow-200">📱 Registered 5Paisa Number</label>
+                <input
+                  id="name"
+                  type="text"
+                  required
+                  value={no}
+                  onChange={(e) => setNo(e.target.value)}
+                  placeholder="Enter 5Paisa Registered Number"
+                  className="w-full mt-1 px-4 py-3 rounded-md border border-yellow-500 text-black placeholder:text-gray-500"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full py-3 bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 rounded-lg text-black font-semibold text-base shadow-md"
+              >
+                🚀 Submit & Open Account
+              </button>
+            </motion.form>
+          </div>
         </div>
-
-        <h3 className="text-xl text-center text-[#324E63] font-light mb-4">
-          ★FREE Rs.150 INSTANT in UPI★
-        </h3>
-
-        <div className="flex justify-center mb-4">
-          <img
-            className="w-[60%] max-w-[220px] h-auto"
-            src="https://rfox.in/upirew.png"
-            alt="UPI Logo"
-          />
-        </div>
-
-        <div className="text-center my-4">
-          <h4 className="text-lg text-[#324E63] font-bold">
-            Get INSTANT Rs.150 Cashback in UPI
-          </h4>
-          <h5 className="text-[#324E63] font-bold">
-            "Just Open Free Account"
-          </h5>
-          <h6 className="text-[#324E63] font-bold">Only For NEW Users</h6>
-        </div>
-
-        <hr className="border-2 border-[#E5E5E5] w-full my-4" />
-
-        <form
-          onSubmit={(e) => submitHandler(e)}
-          className="flex flex-col items-center w-full"
-        >
-          <h3 className="text-[#324E63] mb-2">Enter Your UPI ID</h3>
-          <input
-            value={upi}
-            onChange={(e) => setupi(e.target.value)}
-            className="w-full max-w-[400px] text-black px-4 py-2 border border-gray-300 text-lg rounded-lg placeholder:text-gray-400"
-            type="text"
-            placeholder="Enter here UPI ID"
-            required
-          />
-          <h3 className="text-[#324E63] mb-2 mt-2">Enter Your Register 5 Paisa No.</h3>
-          <input
-            value={no}
-            onChange={(e) => setno(e.target.value)}
-            className="w-full text-black max-w-[400px] px-4 py-2 border border-gray-300 text-lg rounded-lg placeholder:text-gray-400"
-            type="text"
-            placeholder="Enter 5 Paisa No."
-            required
-          />
-          <button onClick={(e) => submitHandler(e, "Five Paisa")} className="w-full max-w-[400px] mt-2 py-3 bg-yellow-500 text-black rounded-lg text-xl hover:bg-[#54D088]">
-  Submit
-</button>
-
-        </form>
-
-        <hr className="border-2 border-[#E5E5E5] w-full my-4" />
-
-        <div className="text-[#323E63] font-bold w-full">
-          <h3 className="mb-2">♕ How to Avail this Offer:</h3>
-          <ol className="list-decimal pl-5 text-[#3a5163] space-y-2">
-            <li>Enter UPI and Submit.</li>
-            <li>Must Use Refer Code(50175752).</li>
-            <li>
-              Complete the basic steps, KYC with PAN and Aadhar, and add a Bank
-              Account. Wait for the account to get Approved. After the Account
-              is approved, you will get Login Details by email.
-            </li>
-            <li>Login to your account.</li>
-            <li>Trade with ₹10 - ₹20.</li>
-            <li>DONE - You will get Rs.150 Cashback Within 24 to 48 Hours.</li>
-          </ol>
-        </div>
-
-        <hr className="border-2 border-[#E5E5E5] w-full my-4" />
-
-        <a
-          className="text-blue-700 underline hover:text-blue-500"
-          href="https://t.me/earningedge123"
-        >
-          Join Telegram Channel For More Updates
-        </a>
-      </div>
+      </motion.div>
     </div>
   );
 };
