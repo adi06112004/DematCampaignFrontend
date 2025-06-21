@@ -83,7 +83,8 @@ const FivePaisa = () => {
                 <li>Use Refer Code <b>50175752</b></li>
                 <li>Complete KYC with PAN & Aadhar</li>
                 <li>Add your bank account</li>
-                <li>After approval, login and DONE</li>
+                <li>After approval, login</li>
+                <li>Do A Trade With ₹10-₹20(Buy And Sell)</li>
                 <li>₹150 cashback in 24-48 hrs</li>
               </ol>
               <div className="text-yellow-300 mt-4 text-sm">
