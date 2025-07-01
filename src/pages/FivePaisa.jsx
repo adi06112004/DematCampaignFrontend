@@ -30,7 +30,7 @@ const FivePaisa = () => {
           setUpi("");
           setNo("");
           setIsLoading(false);
-          window.open("https://5paisa.page.link/hQNFaawjLeKcxPGr9", "_blank", "noopener,noreferrer");
+          window.open("https://5paisa.page.link/ZWXDzJXF8T9tA1Uu7", "_blank", "noopener,noreferrer");
         }, 900);
       } else {
         alert("❌ Submission Failed! Try Again.");
