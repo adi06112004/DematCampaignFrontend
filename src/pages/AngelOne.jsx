@@ -31,7 +31,7 @@ const AngelOne = () => {
           setUpi('');
           setNo('');
           setIsLoading(false);
-          window.open("https://angel-one.onelink.me/Wjgr/9qtu6rzf", "_blank", "noopener,noreferrer");
+          window.open("https://angel-one.onelink.me/Wjgr/r8h4obqv", "_blank", "noopener,noreferrer");
         }, 900);
       } else {
         alert("❌ Submission failed! Try again.");
@@ -84,6 +84,7 @@ const AngelOne = () => {
               <h3 className="text-lg font-semibold text-green-200">🎯 Steps to Earn</h3>
               <ol className="list-decimal list-inside text-slate-100 space-y-1 text-sm">
                 <li>Go to Angel One link</li>
+                <li className="text-red-500">Must use this Refer Code :- RE08275ABS (Copy Please)</li>
                 <li>Register using your number</li>
                 <li>Download the app & complete KYC</li>
                 <li>Don't use WiFi (use mobile data)</li>
