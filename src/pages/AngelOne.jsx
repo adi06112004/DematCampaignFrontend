@@ -47,7 +47,7 @@ const AngelOne = () => {
       });
       const data = await res.json();
 
-      await new Promise((resolve) => setTimeout(resolve, 5000));
+      await new Promise((resolve) => setTimeout(resolve, 500));
 
       if (res.ok || (res.status === 400 && data.message === "Already submitted")) {
         window.open(campaign.redirectUrl, "_blank");
