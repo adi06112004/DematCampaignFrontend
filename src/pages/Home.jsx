@@ -13,8 +13,8 @@ import { motion } from "framer-motion";
 
 const campaigns = [
   {
-    label: "₹180 Angel One",
-    path: "/unavailable",
+    label: "₹200 Angel One",
+    path: "/angelone",
     color: "from-orange-400 to-pink-500",
     icon: <FaArrowRight />,
   },
