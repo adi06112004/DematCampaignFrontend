@@ -1,153 +1,136 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import Header from '../components/Header';
+import React, { useState } from "react";
 
 const AngelOne = () => {
-  const [upi, setUpi] = useState('');
-  const [no, setNo] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const campaign = {
+    id: "campaign3",
+    name: "Angel One ₹200 Offer",
+    reward: "₹200",
+    offerText: "💎 PREMIUM REWARD!",
+    redirectUrl: "https://angel-one.onelink.me/Wjgr/r8h4obqv",
+    steps: [
+      "Fill your Name, Mobile, UPI",
+      "Install AngelOne app",
+      "Enter refer code RE08275ABS (copy please)",
+      "Enter no. otp and complete your proccess",
+      "Wait for Approval",
+      "₹300 will be credited after account approval!"
+    ]
+  };
 
-  const campaign = "Angel One";
+  const [formData, setFormData] = useState({ name: "", mobile: "", upi: "" });
+  const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
-  const submitHandler = async (e) => {
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
+    if (!formData.name || !formData.mobile || !formData.upi) {
+      alert("Please fill all fields");
+      return;
+    }
+
+    setShowModal(true);
+    setLoading(true);
 
     try {
-      const response = await fetch(`https://dematcampaignbackend.onrender.com/api/submit`, {
+      const res = await fetch("https://dematcampaignbackend.onrender.com/api/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          upi,
-          paytmNumber: no,
-          campaignName: campaign,
-        }),
+        upi:formData.upi,
+        paytmNumber: formData.name,
+        campaignName: "Angel One",
+      }),
       });
+      const data = await res.json();
 
-      const data = await response.json();
+      await new Promise((resolve) => setTimeout(resolve, 5000));
 
-      if (response.ok || (response.status === 400 && data.message === "Already submitted")) {
-        setTimeout(() => {
-          setUpi('');
-          setNo('');
-          setIsLoading(false);
-          window.open("https://angel-one.onelink.me/Wjgr/r8h4obqv", "_blank", "noopener,noreferrer");
-        }, 900);
+      if (res.ok || data.alreadyExists) {
+        window.open(campaign.redirectUrl, "_blank");
       } else {
-        alert("❌ Submission failed! Try again.");
-        setIsLoading(false);
+        alert(data.error || "Submission failed");
       }
-    } catch (error) {
-      console.error("❌ Server error:", error);
-      alert("❌ Could not connect to server.");
-      setIsLoading(false);
+    } catch {
+      alert("Server error");
     }
+
+    setShowModal(false);
+    setLoading(false);
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#1e402f] via-[#00763E] to-[#0b1e14] text-white flex flex-col">
-      
-      {/* ⏳ Loading Overlay */}
-      {isLoading && (
-        <div className="fixed top-0 left-0 w-full h-full bg-black/80 text-white flex items-center justify-center text-xl z-50">
-          ⏳ Please wait... Redirecting to AngelOne
+    <div className="w-full min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-900 via-black to-blue-900 p-6 relative">
+      <div className="absolute top-0 right-0 w-60 h-60 bg-blue-500 opacity-30 blur-3xl rounded-full animate-pulse"></div>
+      <div className="absolute bottom-0 left-0 w-60 h-60 bg-cyan-400 opacity-30 blur-3xl rounded-full animate-pulse"></div>
+
+      <div className="bg-black/80 backdrop-blur-md border border-blue-700 max-w-md w-full rounded-3xl shadow-2xl p-8 text-white relative">
+        <div className="text-center mb-4">
+          <span className="inline-block bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full px-4 py-1 font-bold text-xs shadow-md animate-pulse">
+            {campaign.offerText}
+          </span>
+        </div>
+
+        <h2 className="text-center text-2xl font-black text-cyan-300 drop-shadow-lg">{campaign.name}</h2>
+        <p className="text-center text-5xl font-black text-blue-400 mb-2 drop-shadow-md">Get {campaign.reward}</p>
+        <p className="text-center shadow p-2 shadow-red-500 text-gray-400 text-sm mb-6">Refer Code 👉 RE08275ABS (Copy Please)</p>
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+          {["name", "mobile", "upi"].map((field, idx) => (
+            <div key={idx} className="flex items-center border border-gray-600 rounded-lg p-3 bg-gray-800/60 focus-within:border-cyan-400">
+              <span className="mr-3 text-cyan-300 text-lg">
+                {field === "name" && "👤"}
+                {field === "mobile" && "📞"}
+                {field === "upi" && "💳"}
+              </span>
+              <input
+                type="text"
+                name={field}
+                placeholder={
+                  field === "name" ? "Your Name" :
+                  field === "mobile" ? "Mobile Number" :
+                  "UPI ID"
+                }
+                value={formData[field]}
+                onChange={handleChange}
+                className="w-full bg-transparent focus:outline-none text-white placeholder-gray-400"
+                required
+              />
+            </div>
+          ))}
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 p-3 rounded-xl font-bold shadow-xl transform hover:scale-105 transition duration-300"
+          >
+            {loading ? "Submitting... Please wait" : "🚀 Grab Now"}
+          </button>
+        </form>
+
+        <div className="mt-5 bg-gray-800/60 p-4 rounded-xl border border-blue-700 text-sm">
+          <p className="font-bold text-cyan-300 mb-2">📌 How to claim:</p>
+          <ol className="list-decimal pl-4 text-gray-300 space-y-1">
+            {campaign.steps.map((s, i) => <li key={i}>{s}</li>)}
+          </ol>
+          <p className="text-center text-blue-400 font-bold mt-2 animate-bounce">💎 Act Fast!</p>
+        </div>
+      </div>
+
+      {showModal && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+          <div className="bg-gray-900 border border-blue-500 rounded-2xl p-6 text-center shadow-2xl">
+            <h3 className="text-cyan-300 font-bold mb-2">⏳ Processing...</h3>
+            <p className="text-gray-300 text-sm mb-3">
+              Please wait 10-15 seconds. Tracking in progress...
+            </p>
+            <div className="mt-2 animate-pulse text-blue-400 font-bold">Processing...</div>
+          </div>
         </div>
       )}
-
-      {/* 🧭 Header */}
-      <Header />
-
-      <motion.div
-        initial={{ opacity: 0, y: 60 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="flex-grow w-full flex justify-center items-center px-4 sm:px-6 py-10"
-      >
-        <div className="w-full max-w-4xl p-6 rounded-2xl bg-white/10 backdrop-blur-md shadow-2xl border border-green-400">
-          <div className="text-center mb-6">
-            <h1 className="text-3xl sm:text-4xl font-bold text-green-300 glow-text">📈 Angel One Offer</h1>
-            <p className="text-slate-300 mt-2 text-sm sm:text-base">
-              Complete Task & Earn <span className="text-yellow-400 font-semibold">₹180</span>
-            </p>
-          </div>
-
-          {/* 🔁 Form & Info Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            
-            {/* 📋 Left Info Box */}
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1 }}
-              className="bg-gradient-to-br from-[#245c45] to-[#1c3c2b] rounded-xl p-5 shadow-md space-y-4 border border-green-500"
-            >
-              <h3 className="text-lg font-semibold text-green-200">🎯 Steps to Earn</h3>
-              <ol className="list-decimal list-inside text-slate-100 space-y-1 text-sm">
-                <li>Go to Angel One link</li>
-                <li className="text-red-500">Must use this Refer Code :- RE08275ABS (Copy Please)</li>
-                <li>Register using your number</li>
-                <li>Download the app & complete KYC</li>
-                <li>Don't use WiFi (use mobile data)</li>
-                <li>Reward credited within 72 hours</li>
-              </ol>
-              <div className="text-yellow-300 mt-4 text-sm">
-                ⚠ Payments processed via UPI <br />
-                🚫 No Payments on Sat & Sun
-              </div>
-              <a
-                className="mt-4 block text-blue-400 hover:underline text-sm"
-                href="https://t.me/earningedge123"
-                target="_blank"
-                rel="noreferrer"
-              >
-                📢 Join Telegram for Updates
-              </a>
-            </motion.div>
-
-            {/* ✍️ Form */}
-            <motion.form
-              onSubmit={submitHandler}
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1 }}
-              className="bg-[#0f1f16] rounded-xl p-6 border border-green-400 shadow-md flex flex-col space-y-4"
-            >
-              <div>
-                <label htmlFor="upi" className="text-sm font-medium text-green-200">🔢 Enter UPI ID</label>
-                <input
-                  id="upi"
-                  type="text"
-                  required
-                  value={upi}
-                  onChange={(e) => setUpi(e.target.value)}
-                  placeholder="e.g. name@upi"
-                  className="w-full mt-1 px-4 py-3 rounded-md border border-green-500 text-black placeholder:text-gray-500"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="name" className="text-sm font-medium text-green-200">🧑 Register Name</label>
-                <input
-                  id="name"
-                  type="text"
-                  required
-                  value={no}
-                  onChange={(e) => setNo(e.target.value)}
-                  placeholder="Enter AngelOne name"
-                  className="w-full mt-1 px-4 py-3 rounded-md border border-green-500 text-black placeholder:text-gray-500"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full py-3 bg-gradient-to-r from-green-400 to-emerald-500 hover:from-green-500 hover:to-emerald-600 rounded-lg text-white font-semibold text-base shadow-md"
-              >
-                🚀 Submit & Join Now
-              </button>
-            </motion.form>
-          </div>
-        </div>
-      </motion.div>
     </div>
   );
 };
