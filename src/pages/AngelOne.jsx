@@ -49,7 +49,7 @@ const AngelOne = () => {
 
       await new Promise((resolve) => setTimeout(resolve, 5000));
 
-      if (res.ok || (response.status === 400 && data.message === "Already submitted")) {
+      if (res.ok || (res.status === 400 && data.message === "Already submitted")) {
         window.open(campaign.redirectUrl, "_blank");
       } else {
         alert(data.error || "Submission failed");
