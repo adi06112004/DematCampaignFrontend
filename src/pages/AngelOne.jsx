@@ -76,7 +76,7 @@ const AngelOne = () => {
 
         <h2 className="text-center text-2xl font-black text-cyan-300 drop-shadow-lg">{campaign.name}</h2>
         <p className="text-center text-5xl font-black text-blue-400 mb-2 drop-shadow-md">Get {campaign.reward}</p>
-        <p className="text-center shadow p-2 shadow-cyan-500 text-gray-400 text-sm mb-6">Refer Code 👉 RE08275ABS (Copy Please)</p>
+        <p className="text-center shadow p-2 shadow-cyan-500 rounded text-gray-400 text-sm mb-6">Refer Code 👉 RE08275ABS (Copy Please)</p>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           {["name", "mobile", "upi"].map((field, idx) => (
