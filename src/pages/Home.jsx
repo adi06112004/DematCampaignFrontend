@@ -26,13 +26,13 @@ const campaigns = [
   },
   {
     label: "₹100 SunCrypto",
-    path: "/campaign",
+    path: "/unavailable",
     color: "from-yellow-400 to-red-500",
     icon: <FaChartLine />,
   },
   {
     label: "₹150 Five Paisa",
-    path: "/fivepaisa",
+    path: "/unavailable",
     color: "from-green-400 to-blue-600",
     icon: <FaDollarSign />,
   },
