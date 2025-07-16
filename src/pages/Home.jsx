@@ -13,7 +13,7 @@ import { motion } from "framer-motion";
 
 const campaigns = [
   {
-    label: "₹200 Angel One",
+    label: "₹300 Kotak Saving Account",
     path: "/angelone",
     color: "from-orange-400 to-pink-500",
     icon: <FaArrowRight />,
