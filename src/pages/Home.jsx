@@ -32,7 +32,7 @@ const campaigns = [
   },
   {
     label: "₹150 Five Paisa",
-    path: "/unavailable",
+    path: "/fivepaisa",
     color: "from-green-400 to-blue-600",
     icon: <FaDollarSign />,
   },
